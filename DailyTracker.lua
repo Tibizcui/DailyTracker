@@ -45,12 +45,12 @@ local TYPE_LABELS = {
 }
 local EXT_TAB_COLORS = {
   Midnight     = {r=0.58, g=0.30, b=0.95},
-  TheWarWithin = {r=0.55, g=0.75, b=0.95},
+  TheWarWithin = {r=0.58, g=0.50, b=1.00},
 }
 local EXT_LABELS    = {Midnight="MID", TheWarWithin="TWW"}
 local EXT_FULLNAMES = {
-  Midnight     = "Midnight (12.0)",
-  TheWarWithin = "The War Within (11.0)",
+  Midnight     = "Midnight",
+  TheWarWithin = "Midnight",
 }
 local EXT_ORDER = {"Midnight","TheWarWithin"}
 
@@ -993,6 +993,10 @@ evFrame:SetScript("OnEvent",function(_,event,arg1)
     else mainFrame:SetPoint("CENTER",UIParent,"CENTER",0,0) end
     if DailyTrackerDB.open then mainFrame:Show(); mainFrame:RefreshContent() end
 
+  elseif event=="ADDON_LOADED" and arg1=="TibiSuite" then
+    -- TibiSuite est présent : il gère le bouton minimap unifié
+    if minimapBtn then minimapBtn:Hide() end
+
   elseif event=="PLAYER_LOGIN" then
     C_Timer.After(2,function()
       print("|cFFFFD700DailyTracker|r v1.0 — |cFFFFD700/tdt|r pour ouvrir.")
@@ -1009,3 +1013,17 @@ evFrame:SetScript("OnEvent",function(_,event,arg1)
     if mainFrame and mainFrame:IsShown() and mainFrame.RefreshContent then mainFrame:RefreshContent() end
   end
 end)
+
+-- ================================================================
+-- TOGGLE PUBLIC -- appelé par TibiSuite
+-- ================================================================
+function DailyTracker_Toggle()
+  if mainFrame:IsShown() then
+    mainFrame:Hide()
+    DailyTrackerDB.open = false
+  else
+    mainFrame:Show()
+    mainFrame:RefreshContent()
+    DailyTrackerDB.open = true
+  end
+end
