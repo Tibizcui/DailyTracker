@@ -991,7 +991,7 @@ evFrame:SetScript("OnEvent",function(_,event,arg1)
       mainFrame:ClearAllPoints()
       mainFrame:SetPoint(p.point or "CENTER",UIParent,p.point or "CENTER",p.x,p.y)
     else mainFrame:SetPoint("CENTER",UIParent,"CENTER",0,0) end
-    if DailyTrackerDB.open then mainFrame:Show(); mainFrame:RefreshContent() end
+    DailyTrackerDB.open = false  -- ferme automatiquement au login
 
   elseif event=="ADDON_LOADED" and arg1=="TibiSuite" then
     -- TibiSuite est présent : il gère le bouton minimap unifié
