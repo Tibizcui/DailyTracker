@@ -1,10 +1,10 @@
-## Interface: 120007, 120005
+## Interface: 120007
 ## Title: DailyTracker - |cFF9480FFMidnight|r
 ## Title-frFR: DailyTracker - |cFF9480FFMidnight|r
-## Notes: Suivi des activités quotidiennes et hebdomadaires. Midnight & The War Within. Détection automatique via C_QuestLog.
+## Notes: Daily and weekly activity tracker. Midnight & The War Within. Auto-detection via C_QuestLog.
 ## Notes-frFR: Suivi auto des quêtes quotidiennes et hebdomadaires pour Midnight et The War Within. Cases cochées automatiquement selon l'historique de quêtes WoW.
 ## Author: Tibiscui - Kirin Tor
-## Version: 3.0
+## Version: 3.1
 ## IconTexture: Interface\AddOns\DailyTracker\medias\DailyTracker
 ## SavedVariables: DailyTrackerDB
 
