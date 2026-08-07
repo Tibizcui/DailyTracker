@@ -390,6 +390,16 @@ local function BuildUI()
   byLine:SetPoint("TOP",titleStr,"BOTTOM",0,0)
   byLine:SetText("|cFFF58CBA"..L.BY.."|r")
 
+  -- TibiSuite : en-tête comme WeeklyCompass (titre à l'intérieur, haut-gauche)
+  logoL:Hide(); logoR:Hide()
+  byLine:Hide()
+  titleBg:Hide()
+  titleStr:SetParent(mainFrame)
+  titleStr:SetFontObject("GameFontNormalLarge")
+  titleStr:ClearAllPoints()
+  titleStr:SetPoint("TOPLEFT", mainFrame, "TOPLEFT", 16, -14)
+  titleStr:SetText("|cFF16C4FCDailyTracker|r")
+
   local closeBtn = CreateFrame("Button",nil,mainFrame,"UIPanelCloseButton")
   closeBtn:SetPoint("TOPRIGHT",-5,-5)
   closeBtn:SetScript("OnClick",function()
@@ -492,6 +502,7 @@ local function BuildUI()
   collapseBtn:SetPoint("RIGHT",todoBtn,"LEFT",-4,0)
   collapseBtn:SetSize(80,fBtnH)
   collapseBtn:SetBackdrop({bgFile="Interface\\ChatFrame\\ChatFrameBackground",edgeFile="Interface\\Tooltips\\UI-Tooltip-Border",tile=true,tileSize=8,edgeSize=6,insets={left=2,right=2,top=2,bottom=2}})
+  collapseBtn:SetBackdropColor(0.08,0.06,0.10,0.95)
   local collapseTxt = collapseBtn:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
   collapseTxt:SetPoint("CENTER",collapseBtn,"CENTER",0,0)
   collapseBtn.col=caCol
@@ -933,11 +944,8 @@ local function BuildUI()
     local filter  = DailyTrackerDB.filter or "all"
     local hideDone= DailyTrackerDB.hideCompleted and true or false
 
-    -- Titre
-    self._titleStr:SetText(string.format(
-      "|cFFFFD700DailyTracker - |r|cFF%02X%02X%02X%s|r",
-      math.floor(extCol.r*255),math.floor(extCol.g*255),math.floor(extCol.b*255),
-      EXT_FULLNAMES[extKey] or extKey))
+    -- Titre : nom seul, sobre, à la couleur d'identité (pas de "- Midnight")
+    self._titleStr:SetText("|cFF16C4FCDailyTracker|r")
 
     -- Compteur global (evolution 2)
     local gDone,gTotal = GetExtStats(extKey)
@@ -950,7 +958,7 @@ local function BuildUI()
     local sdb=DailyTrackerDB.sections
     local allOpen = sdb.weekly and sdb.onetime and sdb.daily
     self._collapseBtn._txt:SetText(string.format("|cFF%02X%02X%02X%s|r",
-      math.floor(0.80*255),math.floor(0.75*255),math.floor(0.55*255),
+      math.floor(0.98*255),math.floor(0.95*255),math.floor(0.80*255),
       allOpen and L.COLLAPSE_ALL or L.EXPAND_ALL))
 
     -- Highlight onglets extension

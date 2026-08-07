@@ -4,7 +4,7 @@
 ## Notes: Daily and weekly activity tracker. Midnight & The War Within. Auto-detection via C_QuestLog.
 ## Notes-frFR: Suivi auto des quêtes quotidiennes et hebdomadaires pour Midnight et The War Within. Cases cochées automatiquement selon l'historique de quêtes WoW.
 ## Author: Tibiscui - Kirin Tor
-## Version: 3.1
+## Version: 4.0
 ## IconTexture: Interface\AddOns\DailyTracker\medias\DailyTracker
 ## SavedVariables: DailyTrackerDB
 
@@ -15,7 +15,9 @@
 ## Category: Tracking
 ## Category-frFR: Tracking
 
+TibiMidnightUI.lua
 data\Midnight.lua
 data\TheWarWithin.lua
 
 DailyTracker.lua
+DailyTracker_Suite.lua
